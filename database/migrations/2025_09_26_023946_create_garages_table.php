@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('garages', function (Blueprint $table) {
             $table->id();
+            $table->string('garage_name');
+            $table->string('garage_address');
             $table->timestamps();
         });
     }

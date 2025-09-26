@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('branch_id')->constrained(
+                table: 'branch', indexName: 'id'
+            )->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('variant_id')->constrained(
+                table: 'vehicle_variant', indexName: 'id'
+            )->onUpdate('cascade')->onDelete('cascade');
+            $table->string('plat_number');
+            $table->string('owner_name');
+            $table->string('vehicle_identification_number');
             $table->timestamps();
         });
     }
