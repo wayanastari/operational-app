@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('vehicle__services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained(
-                table: 'vehicles', indexName: 'id'
-            )->onUpdate('cascade')->onDelete('cascade');
+                table: 'vehicles')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('garage_id')->constrained(
-                table: 'garages', indexName: 'id'
-            )->onUpdate('cascade')->onDelete('cascade');
+                table: 'garages')->onUpdate('cascade')->onDelete('cascade');
             $table->date('service_date');
             $table->integer('last_odometer');
             $table->string('service_note');

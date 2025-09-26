@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('vehicle__variants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_vehicle_type')->constrained(
-                table: 'vehicle_types', indexName: 'id'
-            )->onUpdate('cascade')->onDelete('cascade');
+                table: 'vehicle_types')->onUpdate('cascade')->onDelete('cascade');
             $table->string('vehicle_variant');
             $table->timestamps();
         });
