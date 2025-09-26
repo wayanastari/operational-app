@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('branch_id')->constrained(
-                table: 'branch', indexName: 'id'
+                table: 'branches', indexName: 'id'
             )->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('variant_id')->constrained(
                 table: 'vehicle_variant', indexName: 'id'
