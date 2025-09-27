@@ -12,8 +12,8 @@
             
             <div class="flex items-center space-x-6">
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="{{ route('dashboard') }}" 
-                       class="{{ request()->routeIs('dashboard') ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900' }} font-medium">
+                    <a href="" 
+                       class="font-medium">
                         Dashboard
                     </a>
                     <div class="relative group">
@@ -22,8 +22,8 @@
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
                         <div class="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                            <a href="{{ route('data-cabang') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Data Cabang</a>
-                            <a href="{{ route('data-bengkel') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Data Bengkel</a>
+                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Data Cabang</a>
+                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Data Bengkel</a>
                         </div>
                     </div>
                 </div>
@@ -43,3 +43,4 @@
         </div>
     </div>
 </nav>
+
