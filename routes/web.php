@@ -6,5 +6,5 @@ use App\Http\Controllers\BranchController;
 Route::resource('/branch', BranchController::class);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });

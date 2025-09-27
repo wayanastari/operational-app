@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('last_odometer');
             $table->string('service_note');
             $table->integer('total_cost');
+            $table->string('service_receipt');
             $table->date('change_oil_date');
             $table->date('next_service_date');
             $table->timestamps();
