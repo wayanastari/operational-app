@@ -33,9 +33,15 @@
                     <td>{{ $item->branch_name }}</td>
                     <td>{{ $item->branch_address }}</td>
                     <td>
-                        <button class="btn-view" onclick="openShowModal('{{ route('branch.show', $item->id) }}', '{{ $item->branch_name }}')"><i class="bi bi-eye-fill"></i> Lihat</button>
-                        <button class="btn-edit" onclick="openEditModal('{{ route('branch.edit', $item->id) }}', '{{ $item->branch_name }}')">✏️ Edit</button>
-                        <button class="btn-delete delete-button" onclick="event.preventDefault(); confirmDelete('{{ $item->id }}','{{ $item->branch_name }}')">❌ Hapus</button>
+                        <button class="btn-view" onclick="openShowModal('{{ route('branch.show', $item->id) }}', '{{ $item->branch_name }}')">
+                            <i class="bi bi-eye-fill"></i>
+                        </button>
+                        <button class="btn-edit" onclick="openEditModal('{{ route('branch.edit', $item->id) }}', '{{ $item->branch_name }}')">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn-delete delete-button" onclick="event.preventDefault(); confirmDelete('{{ $item->id }}','{{ $item->branch_name }}')">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
                         <x-confirm-delete :id="$item->id" :route="route('branch.destroy', $item->id)" />
                     </td>
                 </tr>

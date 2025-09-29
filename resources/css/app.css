@@ -158,11 +158,11 @@
 
 /* Tombol Aksi */
 .actions {
-    white-space: nowrap; /* Memastikan tombol tetap dalam satu baris */
+    white-space: nowrap;
     text-align: right;
 }
 
-.btn-add, .btn-cancel{
+.btn-add, .btn-cancel {
     color: #ffffff;
     border: none;
     padding: 8px 16px;
@@ -173,30 +173,61 @@
     margin-right: 10px;
 }
 
-.btn-add{
+.btn-add {
     background-color: lightseagreen;
 }
 
-.btn-cancel{
+.btn-cancel {
     background-color: #d33;
 }
 
 .btn-edit, .btn-delete, .btn-view {
-    text-decoration: none;
-    padding: 4px 8px;
+    border: none;
+    padding: 6px 10px;
     border-radius: 4px;
-    font-weight: 600;
-    font-size: 13px;
-    margin-left: 2px;
+    font-size: 16px;
+    margin-left: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
 }
+
 .btn-view {
-    color: #3b82f6; /* Warna biru */}
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+
+.btn-view:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
 .btn-edit {
-    color: #f97316; /* Warna oranye */
+    background-color: #f97316;
+    color: #ffffff;
+}
+
+.btn-edit:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
 }
 
 .btn-delete {
-    color: #ef4444; /* Warna merah */
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+}
+
+.btn-view:active, .btn-edit:active, .btn-delete:active {
+    transform: translateY(0);
 }
 
 /* Footer Tabel (Paginasi dan Hasil) */
