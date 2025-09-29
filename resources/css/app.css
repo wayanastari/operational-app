@@ -5,7 +5,241 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+.table-container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Header Tabel */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-input {
+    padding: 8px 10px 8px 30px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    width: 250px;
+    font-size: 14px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    color: #979797;
+    margin-right: 5px; /* Sesuaikan posisi ikon */
+}
+
+/* Tabel */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f3f4f6; /* Garis pemisah antar baris */
+}
+
+.data-table thead{
+    text-align: center;
+}
+
+.data-table thead tr {
+    color: #4b5563;
+    background-color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.data-table th {
+    cursor: pointer;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Icon Sort (Panah ke bawah pada kolom Title) */
+.sort-icon {
+    margin-left: 5px;
+    font-size: 10px;
+    vertical-align: top;
+}
+
+/* Status Badges */
+.status {
+    padding: 4px 8px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.status::before {
+    content: "•";
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 4px;
+}
+
+.published {
+    background-color: #ecfdf5;
+    color: #059669;
+}
+
+.published::before {
+    color: #10b981;
+}
+
+.reviewing {
+    background-color: #fffbeb;
+    color: #f59e0b;
+}
+
+.reviewing::before {
+    color: #fbbf24;
+}
+
+.draft {
+    background-color: #f7f7f7;
+    color: #71717a;
+    border: 1px solid #d4d4d8;
+}
+
+.draft::before {
+    color: #a1a1aa;
+}
+
+/* Is featured icons (Check/Cross) */
+.is-featured {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.check {
+    background-color: #ecfdf5; /* Background hijau muda */
+    color: #059669; /* Teks/icon hijau tua */
+}
+
+.cross {
+    background-color: #fee2e2; /* Background merah muda */
+    color: #ef4444; /* Teks/icon merah tua */
+}
+
+/* Tombol Aksi */
+.actions {
+    white-space: nowrap; /* Memastikan tombol tetap dalam satu baris */
+    text-align: right;
+}
+
+.btn-add {
+    background-color: lightseagreen;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-edit, .btn-delete, .btn-view {
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 2px;
+}
+.btn-view {
+    color: #3b82f6; /* Warna biru */}
+.btn-edit {
+    color: #f97316; /* Warna oranye */
+}
+
+.btn-delete {
+    color: #ef4444; /* Warna merah */
+}
+
+/* Footer Tabel (Paginasi dan Hasil) */
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
+.per-page-select {
+    padding: 4px 8px;
+    margin-left: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.pagination-numbers {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.page-num, .next-page {
+    text-decoration: none;
+    color: #4b5563;
+    padding: 6px 12px;
+    border-right: 1px solid #d1d5db;
+    background-color: #ffffff;
+}
+
+.page-num:last-child, .next-page {
+    border-right: none;
+}
+
+.page-num.active {
+    background-color: #f3f4f6;
+    font-weight: bold;
+}
+
+.dots {
+    padding: 6px 12px;
+    border-right: 1px solid #d1d5db;
+}
+
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
 }

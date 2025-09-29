@@ -1,41 +1,100 @@
 @extends('layouts.app')
-
-@section('title', 'Data Cabang - Cleopatra')
-
+@section('title', 'Data Cabang')
+@section('page-title', 'Data Cabang')
 @section('content')
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-semibold text-gray-900">Data Cabang</h1>
-        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <i class="fas fa-plus mr-2"></i>
-            Tambah Cabang
+<div class="table-container">
+    <div class="table-header">
+        <button type="button" class="btn-add"
+            onclick="openCreateModal('{{ route('branch.create') }}', 'Cabang')">
+            + Tambah Cabang
         </button>
+        <input type="text" placeholder="Search" class="search-input">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#979797" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
     </div>
-    
-    <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+   
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Cabang</th>
+                <th>Alamat</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($branch as $item)
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Cabang</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alamat</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->branch_name }}</td>
+                    <td>{{ $item->branch_address }}</td>
+                    <td>
+                        <button class="btn-view" onclick="openShowModal('{{ route('branch.show', $item->id) }}', '{{ $item->branch_name }}')"><i class="bi bi-eye-fill"></i> Lihat</button>
+                        <button class="btn-edit" onclick="openEditModal('{{ route('branch.edit', $item->id) }}', '{{ $item->branch_name }}')">✏️ Edit</button>
+                        <button class="btn-delete delete-button" onclick="event.preventDefault(); confirmDelete('{{ $item->id }}','{{ $item->branch_name }}')">❌ Hapus</button>
+                        <x-confirm-delete :id="$item->id" :route="route('branch.destroy', $item->id)" />
+                    </td>
                 </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($branch as $item)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->branch_name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->branch_address }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
-                            <button class="text-red-600 hover:text-red-900">Hapus</button>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="table-footer">
+        <div class="showing-results">
+            Showing 1 to 5 of 50 results
+        </div>
+        <div class="pagination">
+            <label for="per-page">Per page</label>
+            <select id="per-page" class="per-page-select">
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+            <div class="pagination-numbers">
+                <a href="#" class="page-num active">1</a>
+                <a href="#" class="page-num">2</a>
+                <a href="#" class="page-num">3</a>
+                <a href="#" class="page-num">4</a>
+                <span class="dots">...</span>
+                <a href="#" class="page-num">9</a>
+                <a href="#" class="page-num">10</a>
+                <a href="#" class="next-page">›</a>
+            </div>
+        </div>
     </div>
 </div>
+@include('branch.create')
 @endsection
+@push('scripts')
+@if ($errors->any() && session('modal-open') == 'createBranchModal')
+<script>
+    var createBranchModal = new bootstrap.Modal(document.getElementById('createBranchModal'));
+    createBranchModal.show();
+</script>
+@endif
+<script>
+    var createBranchModal = document.getElementById('createBranchModal');
+    createBranchModal.addEventListener('show.bs.modal', function () {
+        document.getElementById('branch_name').focus();
+    });
+</script>
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: "{{ session('success') }}",
+        timer: 3000,
+        showConfirmButton: false
+    });
+</script>
+@endif
+@if (session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: "{{ session('error') }}",
+        timer: 3000,
+        showConfirmButton: false
+    });
+</script>
+@endif
+@endpush
