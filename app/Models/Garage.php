@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Garage extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'garage_name',
         'garage_address',

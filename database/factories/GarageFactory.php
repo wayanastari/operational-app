@@ -17,7 +17,8 @@ class GarageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'garage_name' => $this->faker->company,
+            'garage_address'=> $this->faker->address,
         ];
     }
 }

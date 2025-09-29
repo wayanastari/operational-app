@@ -20,15 +20,34 @@ class GarageController extends Controller implements BasedController
             });
         }
 
-        $Garage = $query->paginate(10);
-        return view ('garage.index', compact('Garage'));
+        $garage = $query->paginate(10);
+        return view ('garage.index', compact('garage'));
     }
 
-    public function create() : View{};
-    public function store(Request $request){};
-    public function show($id) : View{};
-    public function edit($id) : View{};
-    public function update(Request $request, $id){};
-    public function destroy($id){};
+    public  function create() : View{
+    }
+
+    public function store(Request $request)
+    {
+       
+    }
+
+    public function show($id) : View{
+
+    }
+
+    public function edit($id) : View{
+
+    }
+
+    public function update(Request $request, $id)
+    {
+
+    }
+
+    public function destroy($id)
+    {
+
+    }
     
 }

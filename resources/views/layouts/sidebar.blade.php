@@ -16,7 +16,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="{{ route('branch.index') }}">Data Cabang</a>
-                <a href="#">Data Bengkel</a>
+                <a href="{{ route('garage.index') }}">Data Bengkel</a>
                 <a href="#">Tipe Kendaraan dan Variant</a>
             </div>
         </div>

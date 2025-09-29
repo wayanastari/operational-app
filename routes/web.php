@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GarageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BranchController;
 
@@ -10,3 +11,4 @@ Route::delete('/branch/{id}', [BranchController::class, 'destroy'])->name('branc
 Route::get('/', function () {
     return view('dashboard');
 });
+Route::resource('/garage', GarageController::class);
