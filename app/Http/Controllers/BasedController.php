@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 interface BasedController {
-    public function index() : View;
+    public function index(Request $request) : View;
     public function create() : View;
     public function store(Request $request);
     public function show($id) : View;

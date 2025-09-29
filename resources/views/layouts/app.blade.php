@@ -363,7 +363,7 @@
                 text: "Anda yakin ingin menghapus data cabang " + name + "? Data yang terhapus tidak dapat dikembalikan!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#20b2aa',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, hapus',
                 cancelButtonText: 'Batal'

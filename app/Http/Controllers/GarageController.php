@@ -10,4 +10,5 @@ class GarageController extends Controller implements BasedController
     public function index() : View{
         return view ('garage.index');
     }
+    
 }

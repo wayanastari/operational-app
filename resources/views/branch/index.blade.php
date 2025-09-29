@@ -8,8 +8,13 @@
             onclick="openCreateModal('{{ route('branch.create') }}', 'Cabang')">
             + Tambah Cabang
         </button>
-        <input type="text" placeholder="Search" class="search-input">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#979797" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+        <form method="GET" action="{{ route('branch.index') }}" class="search-container">
+            <input type="text" class="search-input" name="search" value="{{ request('search') }}" placeholder="Cari cabang...">
+            <button type="submit">
+                <!-- <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#979797" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg> -->
+            </button>
+        </form>
+        
     </div>
    
     <table class="data-table">
@@ -39,28 +44,14 @@
     </table>
     <div class="table-footer">
         <div class="showing-results">
-            Showing 1 to 5 of 50 results
+            Showing {{ $branch->firstItem() }} to {{ $branch->lastItem() }} of {{ $branch->total() }} results
         </div>
         <div class="pagination">
-            <label for="per-page">Per page</label>
-            <select id="per-page" class="per-page-select">
-                <option value="5">5</option>
-                <option value="10">10</option>
-            </select>
-            <div class="pagination-numbers">
-                <a href="#" class="page-num active">1</a>
-                <a href="#" class="page-num">2</a>
-                <a href="#" class="page-num">3</a>
-                <a href="#" class="page-num">4</a>
-                <span class="dots">...</span>
-                <a href="#" class="page-num">9</a>
-                <a href="#" class="page-num">10</a>
-                <a href="#" class="next-page">›</a>
-            </div>
+            {{ $branch->withQueryString()->links() }}
         </div>
     </div>
+
 </div>
-@include('branch.create')
 @endsection
 @push('scripts')
 @if ($errors->any() && session('modal-open') == 'createBranchModal')

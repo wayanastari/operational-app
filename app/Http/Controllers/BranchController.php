@@ -8,8 +8,19 @@ use Illuminate\View\View;
 
 class BranchController extends Controller implements BasedController
 {
-    public function index() : View{
-        $branch = Branch::all();
+    public function index(Request $request) : View{
+        $query = Branch::query();
+
+        //Search
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('branch_name', 'like', '%'.$search.'%')
+                ->orWhere('branch_address', 'like', '%'.$search.'%');
+            });
+        }
+
+        $branch = $query->paginate(10);
         return view ('branch.index', compact('branch'));
     }
 

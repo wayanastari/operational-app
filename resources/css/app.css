@@ -23,6 +23,14 @@
     position: relative;
 }
 
+/* Container for the search bar and icon */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center; 
+}
+
+/* Updated input field */
 .search-input {
     padding: 8px 10px 8px 30px;
     border: 1px solid #e5e7eb;
@@ -31,13 +39,14 @@
     font-size: 14px;
 }
 
+/* Updated search icon */
 .search-icon {
     position: absolute;
-    right: 10px;
+    left: 10px; 
     width: 16px;
     height: 16px;
     color: #979797;
-    margin-right: 5px; /* Sesuaikan posisi ikon */
+    pointer-events: none; 
 }
 
 /* Tabel */
@@ -153,8 +162,7 @@
     text-align: right;
 }
 
-.btn-add {
-    background-color: lightseagreen;
+.btn-add, .btn-cancel{
     color: #ffffff;
     border: none;
     padding: 8px 16px;
@@ -163,6 +171,14 @@
     font-size: 14px;
     cursor: pointer;
     margin-right: 10px;
+}
+
+.btn-add{
+    background-color: lightseagreen;
+}
+
+.btn-cancel{
+    background-color: #d33;
 }
 
 .btn-edit, .btn-delete, .btn-view {
