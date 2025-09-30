@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('plat_number');
             $table->string('owner_name');
             $table->string('vehicle_identification_number');
+            $table->string('vehicle_image');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\GarageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\VehicleTypesController;
 use App\Http\Controllers\VehicleVariantsController;
 
@@ -22,5 +23,4 @@ Route::get('vehicle_types/{id}/edit', [GarageController::class, 'edit'])->name('
 Route::delete('/vehicle_types/{id}', [VehicleTypesController::class, 'destroy'])->name('vehicle_types.destroy');
 
 Route::resource('/vehicle_variants', VehicleVariantsController::class);
-Route::get('vehicle_variants/{id}/edit', [VehicleVariantsController::class, 'edit'])->name('vehicle_variants.edit');
-Route::delete('/vehicle_variants/{id}', [VehicleVariantsController::class, 'destroy'])->name('vehicle_variants.destroy');
+Route::resource('/vehicles', VehicleController::class);

@@ -12,5 +12,14 @@ class Vehicle extends Model
         'plat_number',
         'owner_name',
         'vehicle_identification_number',
+        'vehicle_image',
     ];
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+    public function variant()
+    {
+        return $this->belongsTo(VehicleVariant::class);
+    }
 }

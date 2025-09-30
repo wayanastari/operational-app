@@ -12,4 +12,9 @@ class Branch extends Model
         'branch_name',
         'branch_address',
     ];
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
 }

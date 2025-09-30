@@ -14,6 +14,7 @@ class VehicleVariantsController extends Controller implements BasedController
 
         //Search
         if ($request->has('search')) {
+            dd($request->all());
             $search = $request->input('search');
             $query->where('vehicle_variant', 'like', "%$search%")
                   ->orWhereHas('vehicle_type', function ($q) use ($search) {
@@ -49,39 +50,53 @@ class VehicleVariantsController extends Controller implements BasedController
     }
 
     public function show($id) : View{
+        $vehicle_variants = VehicleVariant::with('vehicle_type')->findOrFail($id);
+
         if(request()->ajax()){
-            $VehicleVariants = VehicleVariant::findOrFail($id);
-            return view('VehicleVariants.partials.show', compact('VehicleVariants'));
+            return view('vehicle_variants.partials.show', compact('vehicle_variants'));
         }
-        $VehicleVariants = VehicleVariant::findOrFail($id);
-        return view('VehicleVariants.show', compact('VehicleVariants'));
+
+        return view('vehicle_variants.show', compact('vehicle_variants'));
     }
 
-    public function edit($id) : View{
+
+    public function edit($id) : View
+    {
+        $vehicle_variants = VehicleVariant::findOrFail($id);
+        $vehicle_types = Vehicle_types::all();
+
         if (request()->ajax()) {
-            $VehicleVariants = VehicleVariant::findOrFail($id);
-            return view('VehicleVariants.partials.form', compact('VehicleVariants'));
+            return view('vehicle_variants.partials.form', compact('vehicle_variants', 'vehicle_types'));
         }
-        $VehicleVariants = VehicleVariant::findOrFail($id);
-        return view('VehicleVariants.edit', compact('VehicleVariants'));
+
+        return view('vehicle_variants.partials.form', compact('vehicle_variants', 'vehicle_types'));
     }
 
-    public function update(Request $request, $id){
+
+
+    public function update(Request $request, $id)
+    {
         $request->validate([
-            'VehicleVariant' => 'required|string|max:255',
+            'id_vehicle_type' => 'required|exists:vehicle_types,id',
+            'vehicle_variant' => 'required|string|max:255',
         ]);
 
-        $VehicleVariants = VehicleVariant::findOrFail($id);
-        $VehicleVariants->update($request->all());
+        $vehicle_variants = VehicleVariant::findOrFail($id);
+        $vehicle_variants->update([
+            'id_vehicle_type' => $request->id_vehicle_type,
+            'vehicle_variant' => $request->vehicle_variant,
+        ]);
 
-        return redirect()->route('VehicleVariants.index')
-                        ->with('success','Vehicle Variant updated successfully');
+        return redirect()->route('vehicle_variants.index')
+                        ->with('success','Vehicle Variant updated successfully.');
     }
+
+
 
     public function destroy($id){
         $VehicleVariants = VehicleVariant::findOrFail($id);
         $VehicleVariants->delete();
-        return redirect()->route('VehicleVariants.index')
+        return redirect()->route('vehicle_variants.index')
                         ->with('success','Vehicle Variant deleted successfully');
     }
 }

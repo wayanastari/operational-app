@@ -11,11 +11,16 @@ class VehicleVariant extends Model
     use HasFactory;
     protected $fillable = [
         'id_vehicle_type',
-        'vehicle_variant'
+        'vehicle_variant',
     ];
     public function vehicle_type()
     {
         return $this->belongsTo(Vehicle_types::class, 'id_vehicle_type');
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'variant_id');
     }
     
 }
