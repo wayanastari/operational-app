@@ -17,7 +17,8 @@ class VehicleVariantFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id_vehicle_type'=> 1,
+            'vehicle_variant' => $this->faker->word(),
         ];
     }
 }

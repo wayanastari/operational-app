@@ -232,8 +232,6 @@
 
 /* Footer Tabel (Paginasi dan Hasil) */
 .table-footer {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-top: 20px;
     border-top: 1px solid #f3f4f6;
@@ -241,8 +239,14 @@
     color: #6b7280;
 }
 
-.pagination {
+.table-footer nav {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination {
+    display: block;
     align-items: center;
 }
 

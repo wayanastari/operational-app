@@ -17,7 +17,8 @@
             <div class="dropdown-content">
                 <a href="{{ route('branch.index') }}">Data Cabang</a>
                 <a href="{{ route('garage.index') }}">Data Bengkel</a>
-                <a href="#">Tipe Kendaraan dan Variant</a>
+                <a href="{{route('vehicle_types.index')}}">Tipe Kendaraan</a>
+                <a href="{{route('vehicle_variants.index')}}">Variant Kendaraan</a>
             </div>
         </div>
         

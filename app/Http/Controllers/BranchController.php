@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class BranchController extends Controller implements BasedController
 {
-    public function index(Request $request) : View{
+     public function index(Request $request) : View{
         $query = Branch::query();
 
         //Search
@@ -20,7 +20,7 @@ class BranchController extends Controller implements BasedController
             });
         }
 
-        $branch = $query->paginate(10);
+        $branch = $query->paginate(10);        
         return view ('branch.index', compact('branch'));
     }
 

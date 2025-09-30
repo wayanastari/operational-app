@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('branch_id')->constrained(
                 table: 'branches')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('variant_id')->constrained(
-                table: 'vehicle__variants')->onUpdate('cascade')->onDelete('cascade');
+                table: 'vehicle_variants')->onUpdate('cascade')->onDelete('cascade');
             $table->string('plat_number');
             $table->string('owner_name');
             $table->string('vehicle_identification_number');

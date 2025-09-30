@@ -360,7 +360,7 @@
             console.log('delete-form-'+id);
             Swal.fire({
                 title: 'Hapus ' + name + '?',
-                text: "Anda yakin ingin menghapus data cabang " + name + "? Data yang terhapus tidak dapat dikembalikan!",
+                text: "Anda yakin ingin menghapus data " + name + "? Data yang terhapus tidak dapat dikembalikan!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#20b2aa',

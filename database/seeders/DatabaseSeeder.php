@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Vehicle_Variant;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             BranchSeeder::class,
             GarageSeeder::class,
+            VehicleVariantSeeder::class,
         ]);
 
     }
