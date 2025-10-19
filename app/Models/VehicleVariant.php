@@ -12,6 +12,7 @@ class VehicleVariant extends Model
     protected $fillable = [
         'id_vehicle_type',
         'vehicle_variant',
+        'vehicle_image',
     ];
     public function vehicle_type()
     {

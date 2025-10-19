@@ -22,6 +22,7 @@
                 <th>No</th>
                 <th>Tipe Kendaraan</th>
                 <th>Variant Kendaraan</th>
+                <th>Foto Kendaraan</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -31,6 +32,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->vehicle_type->vehicle_type }}</td>
                     <td>{{ $item->vehicle_variant }}</td>
+                    <td>
+                        @if ($item->vehicle_image)
+                        <img src="{{ asset('storage/' . $item->vehicle_image) }}" width="100">
+                        @endif
+                    </td>
                     <td>
                         <button class="btn-view" onclick="openShowModal('{{ route('vehicle_variants.show', $item->id) }}', '{{ $item->vehicle_variant }}')">
                             <i class="bi bi-eye-fill"></i>

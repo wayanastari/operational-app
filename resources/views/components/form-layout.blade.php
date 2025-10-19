@@ -1,6 +1,6 @@
 @props(['action', 'isEdit' => false])
 
-<form action="{{ $action }}" method="POST">
+<form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if ($isEdit)
         @method('PUT')

@@ -9,6 +9,15 @@
                 <th>Variant</th>
                 <td>{{ $vehicle_variants->vehicle_variant }}</td>
             </tr>
+            <tr>
+                <th>Foto Kendaraan</th>
+                <td>
+                    @if ($vehicle_variants->vehicle_image)
+                        <img src="{{ asset('storage/' . $vehicle_variants->vehicle_image) }}" alt="Foto Kendaraan" width="150">
+                    @else
+                        <span class="text-muted">Tidak ada foto tersedia</span>
+                    @endif
+            </tr>
         </tbody>
     </table>
     
