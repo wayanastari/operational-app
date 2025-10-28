@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_vehicle_type')->constrained(
                 table: 'vehicle_types')->onUpdate('cascade')->onDelete('cascade');
             $table->string('vehicle_variant');
-            $table->string('vehicle_image');
+            $table->string('vehicle_image')->nullable();
             $table->timestamps();
         });
     }
